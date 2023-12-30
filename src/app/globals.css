@@ -2,13 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
+
 :root {
+  /* color */
   --foreground-rgb: #fff;
   --background-end: #2b2b2b;
   --violet: #a259ff;
+
+  /* screens resp */
+  --mobile: 767px;
+  --tablet: 1024px;
+  --desktop: 1279px;
+  --large-desktop: 1280px;
+
+  --defaultFont:"Work Sans"
 }
+
+
 
 body {
   color: var(--foreground-rgb);
   background: var(--background-end);
+  font-family: var(--defaultFont);
+  font-weight: 600;
 }

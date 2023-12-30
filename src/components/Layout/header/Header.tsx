@@ -3,16 +3,8 @@ import Menu from "@/components/Menu/Menu";
 import Image from "next/image";
 import { FC } from "react";
 
-// Marketplace
-// Rankings
-// Connect a wallet
-
-// BTN-Sign Up
-
-
-
 const Header: FC = () => {
-    return <div className="flex items-center justify-between">
+    return <div className="flex px-12 py-5 items-center justify-between">
         <div>
             <Image className="inline"
                 src="/logo.svg"
@@ -23,9 +15,9 @@ const Header: FC = () => {
             />
             <span>NFT Marketplace</span>
         </div>
-        <div>
+        <div className="flex items-center">
             <Menu />
-            <Button text={"awdawd"} w={5} h={3} />
+            <Button text={"Sign Up"} className={"flex rounded-2xl px-7 py-4 text-base "} icon="/user.svg" />
         </div>
 
     </div>
