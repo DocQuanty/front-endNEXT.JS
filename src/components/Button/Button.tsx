@@ -9,15 +9,15 @@ interface ButtonType {
     text: string;
     // w?: number;
     // h?: number;
-    className?:string
+    className?: string
 }
 
 const Button: FC<ButtonType> = ({ icon, text, className }) => {
-    return <button className={`${className} ${s.test}`}  >
-            {
-                icon? <img className="mr-3" src={icon} alt="icon" />:null
-            }
-            {text}
-        </button>
+    return <a href="/" className={`${className} ${s.test}`}  >
+        {
+            icon ? <img className="mr-3" src={icon} alt="icon" /> : null
+        }
+        {text}
+    </a>
 };
 export default Button;

@@ -1,19 +1,17 @@
+"use client"
 import Link from "next/link";
+import { FC, useState } from "react";
 
-const Menu = () => {
-    interface MenuItems {
-        menu: string,
-        href: string,
-    }
-    const dataMenu: MenuItems[] = [
-        { menu: "Marketplace", href: "/", },
-        { menu: "Rankings", href: "/", },
-        { menu: "Connect a wallet", href: "/", },
-    ]
+interface MenuProps {
+    menuData: {
+        menu: string, href: string,
+    }[];
+}
+
+const Menu: FC<MenuProps> = ({ menuData }) => {
     return <section>
-        {dataMenu.map((el: MenuItems, i: number) => {
-            { console.log(el); }
-            return <Link className="mr-12" key={i} href={el.href}>{el.menu}</Link>
+        {menuData.map((el, i) => {
+            return <Link className="hidden lg:inline mr-12" key={i} href={el.href}>{el.menu}</Link>
         })}
     </section>
 };
