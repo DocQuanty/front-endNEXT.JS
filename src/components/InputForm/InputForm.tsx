@@ -1,7 +1,10 @@
+"use client"
 // import { useClient } from 'next/server';
-// import { useState } from 'react';
 // import s from './FormInput.module.scss';
+import { useState } from 'react';
 import { useForm, SubmitHandler } from "react-hook-form"
+import Input from './Input/Input';
+import { type } from 'os';
 
 interface IFormState {
     name: string,
@@ -13,7 +16,6 @@ interface IFormState {
 const FormInput = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
     const { register, handleSubmit, reset } = useForm<IFormState>()
 
     const onSubmit: SubmitHandler<IFormState> = async (data) => {
@@ -33,7 +35,7 @@ const FormInput = () => {
                     reset();
                     console.log(responseData);
                 } else {
-                    const errorData = await response.json(); // Попытка получить дополнительные данные об ошибке
+                    const errorData = await response.json();
                     console.error("Server responded with an error:", response.status, response.statusText, errorData);
                 }
             } else {
@@ -47,8 +49,11 @@ const FormInput = () => {
     };
     return (
         <>
-            <form className={s.formInput} onSubmit={handleSubmit(onSubmit)}>
-                <input
+            <form onSubmit={handleSubmit(onSubmit)}>
+
+                <Input register={register} />
+
+                {/* <input
                     className={'block'}
                     type="text"
                     placeholder="Username"
@@ -71,7 +76,7 @@ const FormInput = () => {
                     type="password"
                     placeholder="Confirm Password"
                     {...register("confirmPassword")}
-                />
+                /> */}
                 <button disabled={isLoading} style={{ border: "1px solid black" }} type="submit">{isLoading ? "Loading" : "Create Account"}</button>
             </form>
             {isSuccess ? null : (
