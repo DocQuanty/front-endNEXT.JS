@@ -50,38 +50,9 @@ const FormInput = () => {
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
-
-                <Input register={register} />
-
-                {/* <input
-                    className={'block'}
-                    type="text"
-                    placeholder="Username"
-                    {...register("name")}
-                />
-                <input
-                    className={'block'}
-                    type="email"
-                    placeholder="Email"
-                    {...register("email")}
-                />
-                <input
-                    className={'block'}
-                    type="password"
-                    placeholder="Password"
-                    {...register("password")}
-                />
-                <input
-                    className={'block'}
-                    type="password"
-                    placeholder="Confirm Password"
-                    {...register("confirmPassword")}
-                /> */}
-                <button disabled={isLoading} style={{ border: "1px solid black" }} type="submit">{isLoading ? "Loading" : "Create Account"}</button>
+                <Input className={"mb-3"} register={register} />
+                <button style={{ backgroundColor: "#A259FF" }} className="mt-4 px-32 py-3 rounded-3xl" disabled={isLoading} type="submit">{isLoading ? "Loading" : "Create Account"}</button>
             </form>
-            {isSuccess ? null : (
-                <div >Account has been created!</div>
-            )}
         </>
     );
 }
