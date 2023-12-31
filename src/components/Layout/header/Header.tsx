@@ -10,7 +10,7 @@ const menuData = [
 ]
 
 const Header: FC = () => {
-    return <div className="flex px-12 py-5 items-center justify-between">
+    return <div className="flex px-3 sm:px-12 py-5 items-center justify-between">
         <a href="/" >
             <Image className="inline"
                 src="/logo.svg"
@@ -23,7 +23,7 @@ const Header: FC = () => {
         </a>
         <div className="flex items-center">
             <Menu menuData={menuData} />
-            <Button text={"Sign Up"} className={"flex rounded-2xl px-7 py-4 text-base "} icon="/user.svg" />
+            <Button text={"Sign Up"} className={"hidden md:flex rounded-2xl px-7 py-4 text-base whitespace-nowrap"} icon="/user.svg" />
         </div>
 
     </div>

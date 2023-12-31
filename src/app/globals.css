@@ -2,27 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap");
 
 :root {
   /* color */
-  --foreground-rgb: #fff;
+  --foreground-hex: #fff;
+  --white: #fff;
+  --grey: #ccc;
   --background-end: #2b2b2b;
   --violet: #a259ff;
 
   /* screens resp */
-  --mobile: 767px;
-  --tablet: 1024px;
-  --desktop: 1279px;
-  --large-desktop: 1280px;
-
-  --defaultFont:"Work Sans"
+  --sm: 640px;
+  --md: 768px;
+  --lg: 1024px;
+  --xl: 1280px;
+  --2xl: 1536px;
+  --defaultFont: "Work Sans, sans serif";
 }
 
-
-
 body {
-  color: var(--foreground-rgb);
+  --foreground-hex: #fff;
+  --white: #fff;
+  color: var(--foreground-hex);
   background: var(--background-end);
   font-family: var(--defaultFont);
   font-weight: 600;
