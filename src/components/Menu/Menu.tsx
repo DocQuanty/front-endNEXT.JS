@@ -14,7 +14,7 @@ const Menu: FC<MenuProps> = ({ menuData }) => {
         <section>
             <div className="hidden md:inline ">
                 {menuData.map((el, i) => (
-                    <Link key={i} href={el.href} className="mr-12 last:mr-2">
+                    <Link key={i} href={el.href} className="last:mr-3 lg:last:mr-10 sm:mr-5 lg:mr-12">
                         {el.menu}
                     </Link>
                 ))}

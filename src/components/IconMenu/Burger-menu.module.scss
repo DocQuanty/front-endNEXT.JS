@@ -54,14 +54,14 @@
 .open .burgerMenu_menuList {
   position: absolute;
   top: 50px;
-  right: 60px;
+  right: 0px;
   max-height: 300px;
   opacity: 1;
 }
 
 .close .burgerMenu_menuList {
   top: 50px;
-  right: 60px;
+  right: 0px;
   max-height: 0px;
   opacity: 0;
 }
