@@ -11,7 +11,6 @@ const CreateAccount = () => {
 
     useEffect(() => {
         const screenWidth = window.screen.width
-        const widthBlock = refComponent.current.getBoundingClientRect().width
 
         if (screenWidth <= 640) {
             setWidth(375)
@@ -30,7 +29,7 @@ const CreateAccount = () => {
 
     return <section className="block  sm:flex items-center">
         <div className="sm:mr-12 lg:mr-32" >
-            <Image ref={refComponent} src={"/jpg/CreateAccount.jpg"} alt={"jpg"} width={width} height={height} />
+            <Image src={"/jpg/CreateAccount.jpg"} alt={"jpg"} width={width} height={height} />
         </div>
         <div>
             <div className="sm:mt-3 md:mt-28">
