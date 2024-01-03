@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import s from "./Burger-menu.module.scss"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const BurgerMenu = () => {
+
+interface MenuProps {
+    menuData: {
+        menu: string, href: string,
+    }[];
+}
+
+const BurgerMenu: FC<MenuProps> = ({ menuData }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname()
 
     const burgerToggle = () => {
         setIsMenuOpen(!isMenuOpen)
@@ -12,9 +22,17 @@ const BurgerMenu = () => {
             <div className={s.burgerMenu_burgerLine}></div>
             <div className={s.burgerMenu_menuList}>
                 <ul>
-                    <li><a href="/marketplace">Marketplace</a></li>
-                    <li><a href="/rankings">Rankings</a></li>
-                    <li><a href="/connect">Connect a wallet</a></li>
+                    {menuData.map((el, i) => (
+                        <li key={i}>
+                            <Link href={el.href} className={`${pathname === el.href ? "c-red" : ""}`}>
+                                {el.menu}
+                            </Link>
+                        </li>
+
+                    ))}
+                    <Link href={"/pages/createAccount"} >
+                        SingUp
+                    </Link>
                 </ul>
             </div>
         </div>

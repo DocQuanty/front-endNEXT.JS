@@ -1,6 +1,7 @@
 import Button from "@/components/Button/Button";
 import Menu from "@/components/Menu/Menu";
 import Image from "next/image";
+import Link from "next/link";
 import { FC } from "react";
 
 const menuData = [
@@ -12,7 +13,7 @@ const menuData = [
 
 const Header: FC = () => {
     return <div className="flex px-3 sm:px-12 py-5 items-center justify-between">
-        <a href="/" >
+        <Link href="/" >
             <Image className="inline"
                 src="/logo.svg"
                 alt="Vercel Logo"
@@ -21,7 +22,7 @@ const Header: FC = () => {
                 priority
             />
             <span>NFT Marketplace</span>
-        </a>
+        </Link>
         <div className="flex items-center">
             <Menu menuData={menuData} />
             <Button text={"Sign Up"} className={"hidden md:flex rounded-2xl px-7 py-4 text-base whitespace-nowrap"} icon="/user.svg" />

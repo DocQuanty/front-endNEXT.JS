@@ -5,7 +5,7 @@ import CreateAccount from '@/components/CreateAccount/CreateAccount'
 export default function Home() {
   return (
     <Layout>
-      {/* <CreateAccount /> */}
+      Home
     </Layout>
   )
 }

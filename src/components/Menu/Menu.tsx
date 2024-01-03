@@ -13,8 +13,7 @@ interface MenuProps {
 
 const Menu: FC<MenuProps> = ({ menuData }) => {
     const pathname = usePathname();
-    console.log(pathname);
-    const style = "last:mr-3 lg:last:mr-10 sm:mr-5 lg:mr-12"
+    const style = "last:mr-3 lg:last:mr-10 sm:mr-5 lg:mr-12 whitespace-nowrap"
 
     return (
         <section>
@@ -27,7 +26,7 @@ const Menu: FC<MenuProps> = ({ menuData }) => {
             </div>
             {/* responsive menu (burger) */}
             <div className="md:hidden">
-                <IconMenu />
+                <IconMenu menuData={menuData} />
             </div>
         </section>
     );
