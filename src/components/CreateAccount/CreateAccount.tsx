@@ -27,14 +27,14 @@ const CreateAccount = () => {
 
     }, [refComponent]);
 
-    return <section className="block  sm:flex items-center">
-        <div className="sm:mr-12 lg:mr-32" >
-            <Image src={"/jpg/CreateAccount.jpg"} alt={"jpg"} width={width} height={height} />
+    return <section className="block sm:flex sm:flex-1 sm:items-center md:justify-center">
+        <div className="sm:mr-2 lg:w-1/2 md:mr-12" >
+            <Image className="w-full bg-contain " src={"/jpg/CreateAccount.jpg"} alt={"jpg"} width={width} height={height} />
         </div>
         <div>
-            <div className="sm:mt-3 md:mt-28">
-                <div className="sm:text-4xl md:text-5xl mb-4 font-semibold">Create account</div>
-                <div className="sm:text-xs md:text-xl max-w-96 mb-7 font-normal">Welcome! enter your details and start creating, collecting and selling NFTs.</div>
+            <div className="sm:mt-3 sm:w-full md:mt-28 lg:px-5">
+                <div className="text-4xl md:text-5xl mt-5 sm:mt-0 mb-5 sm:mb-2 md:font-semibold">Create account</div>
+                <div className="sm:text-xs md:text-xl mb-7 md:font-normal">Welcome! enter your details and start creating, collecting and selling NFTs.</div>
                 <InputForm />
             </div>
         </div>

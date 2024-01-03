@@ -51,7 +51,7 @@ const FormInput = () => {
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input className={"mb-3 max-w-full"} register={register} />
-                <button style={{ backgroundColor: "#A259FF" }} className="whitespace-nowrap max-w-full md:mt-4 px-32 py-3 rounded-3xl" disabled={isLoading} type="submit">{isLoading ? "Loading" : "Create Account"}</button>
+                <button style={{ backgroundColor: "#A259FF" }} className="w-full whitespace-nowrap mt-4 px-32 py-3 rounded-3xl " disabled={isLoading} type="submit">{isLoading ? "Loading" : "Create Account"}</button>
             </form>
         </>
     );

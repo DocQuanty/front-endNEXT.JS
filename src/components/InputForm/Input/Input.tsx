@@ -23,11 +23,10 @@ const Input: FC<DataProps> = ({ register, className }) => {
     return (
         <>
             {inputsConfig.map((config, i) => (
-                <div className={`relative ${className}`}>
+                <div key={i} className={`relative ${className}`}>
                     <Image className="absolute top-3 left-4" src={config.srcIcon} alt={""} width={20} height={20} />
                     <input
-                        className="placeholder-slate-500  focus:outline-none rounded-3xl text-black block pr-20 pl-16 py-3"
-                        key={i}
+                        className="placeholder-slate-500  focus:outline-none rounded-3xl text-black block pr-20 pl-16 py-3 w-full"
                         type={config.type}
                         placeholder={config.placeholder}
                         {...register(config.name)}
