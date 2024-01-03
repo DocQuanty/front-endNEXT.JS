@@ -13,7 +13,7 @@ interface ButtonType {
 }
 
 const Button: FC<ButtonType> = ({ icon, text, className }) => {
-    return <a href="/" className={`${className} ${s.test}`}  >
+    return <a href="/" className={`${className} ${s.color}`}  >
         {
             icon ? <img className="mr-3" src={icon} alt="icon" /> : null
         }
