@@ -1,5 +1,5 @@
-import s from './';
+// import s from './';
 const Cars = () => {
-return <>Cars</>
+    return <>Cars</>
 };
 export default Cars;

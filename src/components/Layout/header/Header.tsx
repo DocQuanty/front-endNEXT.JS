@@ -4,9 +4,10 @@ import Image from "next/image";
 import { FC } from "react";
 
 const menuData = [
-    { menu: "Marketplace", href: "/marketplace", },
-    { menu: "Rankings", href: "/rankings", },
-    { menu: "Connect a wallet", href: "/connectWallet", },
+    { menu: "Home", href: "/", },
+    { menu: "Marketplace", href: "/pages/marketplace", },
+    { menu: "Rankings", href: "/pages/rankings", },
+    { menu: "Connect a wallet", href: "/pages/connectWallet", },
 ]
 
 const Header: FC = () => {
