@@ -1,11 +1,16 @@
-import Image from 'next/image'
 import Layout from '@/components/Layout/Layout'
-import CreateAccount from '@/components/CreateAccount/CreateAccount'
+import { Metadata } from 'next'
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Home",
+}
+
+const Home = () => {
   return (
     <Layout>
       Home
     </Layout>
   )
 }
+
+export default Home

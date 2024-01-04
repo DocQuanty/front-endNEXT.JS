@@ -1,12 +1,12 @@
-'use client'
 import Layout from "@/components/Layout/Layout";
-import Head from "next/head";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Connect a Wallet",
+}
 
 const ConnectWallet = () => {
     return <Layout>
-        <Head>
-            <title>awdawdawd</title>
-        </Head>
         ConnectWallet
     </Layout>
 };
