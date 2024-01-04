@@ -2,6 +2,7 @@
 
 import { FC } from "react";
 import s from "./Button.module.scss"
+import Link from "next/link";
 // import classNames from "classnames";
 
 interface ButtonType {
@@ -13,11 +14,11 @@ interface ButtonType {
 }
 
 const Button: FC<ButtonType> = ({ icon, text, className }) => {
-    return <a href="/" className={`${className} ${s.color}`}  >
+    return <Link href="/pages/createAccount" className={`${className} ${s.color}`}  >
         {
             icon ? <img className="mr-3" src={icon} alt="icon" /> : null
         }
         {text}
-    </a>
+    </Link>
 };
 export default Button;

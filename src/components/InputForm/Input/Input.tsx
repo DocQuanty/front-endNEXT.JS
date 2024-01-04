@@ -13,7 +13,7 @@ interface InputType {
     srcIcon: string
 }
 const inputsConfig: InputType[] = [
-    { type: 'text', placeholder: 'Username', name: 'username', srcIcon: '/user.svg' },
+    { type: 'text', placeholder: 'Username', name: 'name', srcIcon: '/user.svg' },
     { type: 'email', placeholder: 'Email', name: 'email', srcIcon: '/envelope.svg' },
     { type: 'password', placeholder: 'Password', name: 'password', srcIcon: '/lock.svg' },
     { type: 'password', placeholder: 'Confirm Password', name: 'confirmPassword', srcIcon: '/lock.svg' },
