@@ -2,7 +2,7 @@
 
 import InputForm from "@/components/InputForm/InputForm"
 import Image from "next/image";
-import { createRef, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 
 const CreateAccount = () => {
     const refComponent = createRef();

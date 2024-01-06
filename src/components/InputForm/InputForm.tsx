@@ -1,6 +1,4 @@
 "use client"
-// import { useClient } from 'next/server';
-// import s from './FormInput.module.scss';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from "react-hook-form"
 import Input from './Input/Input';
