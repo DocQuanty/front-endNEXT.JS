@@ -5,6 +5,7 @@ const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
     return <main >
         <Header />
         {children}
+        awdawd
         {/* <Footer/> */}
     </main>
 };
