@@ -2,20 +2,69 @@
 import Layout from "@/components/Layout/Layout";
 import UserTable from "@/components/UserTable/UserTable";
 // import { Metadata } from "next";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 // this is not work in client components
 // export const metadata: Metadata = {
 //     title: "Rankings",
 // }
 
+interface User {
+    id: number;
+    name: string;
+    sold: number;
+    volume: number;
+}
+
 const Rankings = () => {
     const [activeTab, setActiveTab] = useState("Today");
+    const [data, setData] = useState<User[] | null>(null);
+    const isTabActive = (tab: string) => tab === activeTab;
 
     const handleChangeTable = (Tab: string) => {
-        console.log("changeTableOn" + " " + Tab);
+        // console.log("changeTableOn" + " " + Tab);
         setActiveTab(Tab)
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("http://localhost:5000/api/users/", {
+                    method: "GET",
+                    headers: { 'Content-Type': 'application/json' },
+                });
+
+                if (!response.ok) {
+                    console.error(`HTTP error! Status: ${response.status}`);
+                    return;
+                }
+
+                const jsonData = await response.json();
+                setData(jsonData);
+            } catch (error) {
+                console.error("An error occurred:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const changeTab = (active: any, data: User[] | null) => {
+        switch (active) {
+            case "Today":
+                return data ? <UserTable data={data} active={active} /> : null;
+            case "ThisWeek":
+                return data ? <UserTable data={data} active={active} /> : null;
+            case "ThisMonth":
+                return data ? <UserTable data={data} active={active} /> : null;
+            case "AllTime":
+                return data ? <UserTable data={data} active={active} /> : null;
+            default:
+                break;
+        }
+    }
+
+
+
     return <Layout><section>
         <div>
             <h1>Top Creators</h1>
@@ -23,16 +72,37 @@ const Rankings = () => {
         </div>
         <div className="wrapper">
             <div>
-                <button onClick={() => handleChangeTable("Today")}>Today</button>
-                <button onClick={() => handleChangeTable("ThisWeek")}>ThisWeek</button>
-                <button onClick={() => handleChangeTable("ThisMonth")}>ThisMonth</button>
-                <button onClick={() => handleChangeTable("AllTime")}>AllTime</button>
+                <button
+                    style={{ fontSize: "22px", marginRight: "10px" }}
+                    onClick={() => handleChangeTable("Today")}
+                    className={isTabActive("Today") ? "text-orange-500" : ""}
+                >
+                    Today
+                </button>
+                <button
+                    style={{ fontSize: "22px", marginRight: "10px" }}
+                    onClick={() => handleChangeTable("ThisWeek")}
+                    className={isTabActive("ThisWeek") ? "text-orange-500" : ""}
+                >
+                    ThisWeek
+                </button>
+                <button
+                    style={{ fontSize: "22px", marginRight: "10px" }}
+                    onClick={() => handleChangeTable("ThisMonth")}
+                    className={isTabActive("ThisMonth") ? "text-orange-500" : ""}
+                >
+                    ThisMonth
+                </button>
+                <button
+                    style={{ fontSize: "22px", marginRight: "10px" }}
+                    onClick={() => handleChangeTable("AllTime")}
+                    className={isTabActive("AllTime") ? "text-orange-500" : ""}
+                >
+                    AllTime
+                </button>
             </div>
             <div>
-                {activeTab === "Today" && <UserTable activeTab={activeTab} />}
-                {activeTab === "ThisWeek" && <UserTable activeTab={activeTab} />}
-                {activeTab === "ThisMonth" && <UserTable activeTab={activeTab} />}
-                {activeTab === "AllTime" && <UserTable activeTab={activeTab} />}
+                {changeTab(activeTab, data)}
             </div>
         </div>
     </section></Layout>

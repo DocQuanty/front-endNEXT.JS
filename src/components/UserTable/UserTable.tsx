@@ -1,5 +1,5 @@
 'use client'
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 
 interface User {
     id: number;
@@ -9,50 +9,29 @@ interface User {
 }
 
 interface UserTableProps {
-    activeTab: string;
+    data: object
+    active: "string"
 }
 
-const UserTable: FC<UserTableProps> = ({ activeTab }) => {
-    const [data, setData] = useState<User[] | null>(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch("http://localhost:5000/api/users/", {
-                    method: "GET",
-                    headers: { 'Content-Type': 'application/json' },
-                });
-
-                if (!response.ok) {
-                    console.error(`HTTP error! Status: ${response.status}`);
-                    return;
-                }
-
-                const jsonData = await response.json();
-                setData(jsonData);
-            } catch (error) {
-                console.error("An error occurred:", error);
-            }
-        };
-
-        fetchData();
-    }, []); // Порожній масив означає, що ефект буде викликано лише після монтажу компонента
+const UserTable: FC<UserTableProps> = ({ data, active }) => {
 
     return (
         <ul>
             {data?.map((user) => (
                 <li key={user.id}>
                     <span>number#1</span>
-                    {" "}
+                    <br />
                     <span>icon</span>
-                    {" "}
+                    <br />
                     <span>{user.name}</span>
-                    {" "}
+                    <br />
                     <span>change</span>
-                    {" "}
-                    <span>{user.sold}</span>
-                    {" "}
-                    <span>{user.volume}</span>
+                    <br />
+                    <span>{active === "ThisWeek" ? user.sold + 100 : user.sold}</span>
+                    <br />
+                    <span>{active === "ThisWeek" ? user.volume + 100 : user.volume}</span>
+                    <br />
+                    <br />
                 </li>
             ))}
         </ul>
