@@ -1,5 +1,7 @@
 'use client'
-import { FC, useState } from "react";
+import { FC, Fragment, useState } from "react";
+import s from "./UserTable.module.scss";
+
 
 interface User {
     id: number;
@@ -9,33 +11,35 @@ interface User {
 }
 
 interface UserTableProps {
-    data: object
-    active: "string"
+    data: User[]
+    active: string
 }
 
 const UserTable: FC<UserTableProps> = ({ data, active }) => {
-
     return (
-        <ul>
+        <div className={s.parent}>
+            <div>#</div>
+            <div>Artist</div>
+            <div>Change</div>
+            <div>NFTs Sold</div>
+            <div>Volume</div>
             {data?.map((user) => (
-                <li key={user.id}>
-                    <span>number#1</span>
-                    <br />
-                    <span>icon</span>
-                    <br />
-                    <span>{user.name}</span>
-                    <br />
-                    <span>change</span>
-                    <br />
-                    <span>{active === "ThisWeek" ? user.sold + 100 : user.sold}</span>
-                    <br />
-                    <span>{active === "ThisWeek" ? user.volume + 100 : user.volume}</span>
-                    <br />
-                    <br />
-                </li>
+                <Fragment key={user.id}>
+                    <div>{user.id}</div>
+                    <div>
+                        <span className="text-red-500">icon {" "}</span>
+                        <span>{user.name}</span>
+                    </div>
+                    <div>+1.41%</div>
+                    <div>
+                        {active === "ThisWeek" ? user.sold + 100 : user.sold}
+                    </div>
+                    <div>{active === "ThisWeek" ? user.volume + 100 : user.volume} ETH</div>
+                </Fragment>
             ))}
-        </ul>
-    );
+        </div>
+    )
+
 };
 
 export default UserTable;

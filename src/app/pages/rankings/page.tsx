@@ -3,6 +3,8 @@ import Layout from "@/components/Layout/Layout";
 import UserTable from "@/components/UserTable/UserTable";
 // import { Metadata } from "next";
 import { useEffect, useState } from "react";
+
+
 // this is not work in client components
 // export const metadata: Metadata = {
 //     title: "Rankings",
@@ -63,48 +65,32 @@ const Rankings = () => {
         }
     }
 
+    const button = [
+        { tabName: "Today" },
+        { tabName: "ThisWeek" },
+        { tabName: "ThisMonth" },
+        { tabName: "AllTime" }
+    ]
 
-
-    return <Layout><section>
-        <div>
-            <h1>Top Creators</h1>
-            <p>Check out top ranking NFT artists on the NFT Marketplace.</p>
-        </div>
-        <div className="wrapper">
+    return <Layout>
+        <section className="pl-28 pr-28 " >
             <div>
-                <button
-                    style={{ fontSize: "22px", marginRight: "10px" }}
-                    onClick={() => handleChangeTable("Today")}
-                    className={isTabActive("Today") ? "text-orange-500" : ""}
-                >
-                    Today
-                </button>
-                <button
-                    style={{ fontSize: "22px", marginRight: "10px" }}
-                    onClick={() => handleChangeTable("ThisWeek")}
-                    className={isTabActive("ThisWeek") ? "text-orange-500" : ""}
-                >
-                    ThisWeek
-                </button>
-                <button
-                    style={{ fontSize: "22px", marginRight: "10px" }}
-                    onClick={() => handleChangeTable("ThisMonth")}
-                    className={isTabActive("ThisMonth") ? "text-orange-500" : ""}
-                >
-                    ThisMonth
-                </button>
-                <button
-                    style={{ fontSize: "22px", marginRight: "10px" }}
-                    onClick={() => handleChangeTable("AllTime")}
-                    className={isTabActive("AllTime") ? "text-orange-500" : ""}
-                >
-                    AllTime
-                </button>
+                <h1>Top Creators</h1>
+                <p>Check out top ranking NFT artists on the NFT Marketplace.</p>
             </div>
-            <div>
+            <div className="wrapper">
+                <div className="flex justify-center mb-10">
+                    {button.map((tab) => (
+                        <button
+                            key={tab.tabName}
+                            onClick={() => handleChangeTable(tab.tabName)}
+                            className={`w-full py-2 text-2xl font-semibold text-zinc-400    ${isTabActive(tab.tabName) ? "transition-colors duration-300 border-b-2 border-x-neutral-600 text-white" : ""}`}
+                        >{tab.tabName}</button>
+                    ))}
+                </div>
                 {changeTab(activeTab, data)}
             </div>
-        </div>
-    </section></Layout>
+        </section>
+    </Layout>
 };
 export default Rankings;

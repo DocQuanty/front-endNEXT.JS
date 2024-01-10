@@ -1,0 +1,12 @@
+.parent {
+  display: grid;
+  grid-template-columns: 1rem 480px repeat(3, 260px);
+  grid-template-rows: 46px 52px repeat(3, 56px);
+  grid-column-gap: 40px;
+  grid-row-gap: 0px;
+}
+
+.headerGrid {
+  border: 1px solid;
+  border-color: var(--backGroundSecondary);
+}
