@@ -1,4 +1,5 @@
 .parent {
+  max-width: 1050px;
   display: grid;
   grid-template-columns: 1rem 480px repeat(3, 260px);
   grid-template-rows: 46px 52px repeat(3, 56px);

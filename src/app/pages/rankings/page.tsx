@@ -16,10 +16,19 @@ interface User {
     sold: number;
     volume: number;
 }
+interface Img {
+    id_img: number;
+    id_user: number;
+    name: string;
+}
+
+
 
 const Rankings = () => {
     const [activeTab, setActiveTab] = useState("Today");
     const [data, setData] = useState<User[] | null>(null);
+    // const [img, setImgData] = useState<Img[] | null>(null)
+
     const isTabActive = (tab: string) => tab === activeTab;
 
     const handleChangeTable = (Tab: string) => {
@@ -30,23 +39,32 @@ const Rankings = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/users/", {
+                const responseUsers = await fetch("http://localhost:5000/api/users/", {
                     method: "GET",
                     headers: { 'Content-Type': 'application/json' },
                 });
 
-                if (!response.ok) {
-                    console.error(`HTTP error! Status: ${response.status}`);
+                const responseImages = await fetch("http://localhost:5000/api/img/", {
+                    method: "GET",
+                    headers: { 'Content-Type': 'application/json' },
+                });
+
+                if (!responseUsers.ok || !responseImages.ok) {
+                    console.error(`HTTP error! Status: ${responseUsers.status} for users or ${responseImages.status} for images`);
                     return;
                 }
 
-                const jsonData = await response.json();
-                setData(jsonData);
+                const jsonData = await responseUsers.json();
+                const jsonImgData = await responseImages.json();
+
+                if (Array.isArray(jsonData) && Array.isArray(jsonImgData)) {
+                    const mergedData = [...jsonData, ...jsonImgData];
+                    setData(mergedData);
+                }
             } catch (error) {
                 console.error("An error occurred:", error);
             }
         };
-
         fetchData();
     }, []);
 
@@ -64,7 +82,6 @@ const Rankings = () => {
                 break;
         }
     }
-
     const button = [
         { tabName: "Today" },
         { tabName: "ThisWeek" },
