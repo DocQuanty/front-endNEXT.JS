@@ -15,11 +15,12 @@ interface User {
     name: string;
     sold: number;
     volume: number;
+    img: Img
 }
 interface Img {
     id_img: number;
     id_user: number;
-    name: string;
+    src: string;
 }
 
 
@@ -27,12 +28,10 @@ interface Img {
 const Rankings = () => {
     const [activeTab, setActiveTab] = useState("Today");
     const [data, setData] = useState<User[] | null>(null);
-    // const [img, setImgData] = useState<Img[] | null>(null)
 
     const isTabActive = (tab: string) => tab === activeTab;
 
     const handleChangeTable = (Tab: string) => {
-        // console.log("changeTableOn" + " " + Tab);
         setActiveTab(Tab)
     }
 
@@ -57,8 +56,13 @@ const Rankings = () => {
                 const jsonData = await responseUsers.json();
                 const jsonImgData = await responseImages.json();
 
+
                 if (Array.isArray(jsonData) && Array.isArray(jsonImgData)) {
-                    const mergedData = [...jsonData, ...jsonImgData];
+
+                    const mergedData = jsonData.map((user, index) => ({
+                        ...user,
+                        img: jsonImgData[index] || { src: "http://placehold.it/60x60/" }
+                    }));
                     setData(mergedData);
                 }
             } catch (error) {
